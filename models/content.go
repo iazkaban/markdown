@@ -1,19 +1,19 @@
 package models
 
-type FontType uint8
+type FontType int16
 
 const (
-	FontTypeUnkown = iota
-	FontTypeI      //斜体
-	FontTypeBlod   //粗体
-	FontTypeIBlod  //粗体+斜体
+	FontTypeNone        FontType = 0         //无特殊字体
+	FontTypeItalics     FontType = 1 << iota //斜体
+	FontTypeBlod                             //粗体
+	FontTypeDeleted                          //删除线
+	FontTypeUnderLine                        //下划线
+	FontTypeSuperScript                      //上标
+	FontTypeSubScript                        //下标
 )
 
-type Contest struct {
-	Body       string
-	FontType   FontType
-	IsDeleted  bool //删除线
-	IsDownLine bool //下划线
-	IsUpTag    bool //是否是上标
-	IsDownTag  bool //是否是下标
+//内容
+type Content struct {
+	Content  string   //内容
+	FontType FontType //字体设定
 }
